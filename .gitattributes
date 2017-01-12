@@ -1,0 +1,7 @@
+* text=auto
+
+*.py text
+
+*.png=binary
+*.jpg=binary
+*.blend=binary
