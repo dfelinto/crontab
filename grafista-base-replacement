@@ -1,0 +1,17 @@
+#!/bin/bash
+BLENDER=/home/guest/src/blender/grafista
+GRAFISTA=/home/guest/src/web-dev/grafista
+
+# get latest blender
+cd $BLENDER
+git fetch
+git checkout render-layers
+git rebase origin/render-layers
+cd source/blender
+count=`grep -r -H --color=never -H -e "[^a-z]Base " . | wc -l`
+
+# update database
+cd $GRAFISTA
+source venv/bin/activate
+cd grafista
+python manage.py insert_sample base $count
