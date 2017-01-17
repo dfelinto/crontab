@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SERIE_URL="base_defines"
+BRANCH="render-layers"
+QUERY="grep -r -H --color=never -H -e 'OBACT[^_]' -e 'BASACT[_^]' -e 'FIRSTBASE[^_]' -e 'LASTBASE[^_]' . | wc -l"
+
+grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"

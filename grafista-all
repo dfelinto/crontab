@@ -1,0 +1,6 @@
+#!/bin/bash
+
+grafista-base-context
+grafista-base-define
+grafista-base-replacement
+grafista-immediate-mode

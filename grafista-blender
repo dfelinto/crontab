@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BLENDER=$HOME/src/blender/grafista
+GRAFISTA=$HOME/src/web-dev/grafista
+
+if [ "$#" != 3 ] ; then
+
+  echo "Wrong number of parameters specified ($#) ... use 'h' for help. Exiting."
+  exit 0
+
+elif [ "$LINE" == "h" ] ; then
+
+  echo "grafista-blender serie_url branch query"
+  exit 0
+fi
+
+SERIE_URL=$1
+BRANCH=$2
+QUERY=$3
+
+# get latest blender
+cd $BLENDER
+git fetch
+`git checkout origin/$BRANCH`
+cd source/blender
+count=`eval $QUERY`
+
+# update database
+cd $GRAFISTA
+source venv/bin/activate
+cd grafista
+python manage.py insert_sample $SERIE_URL $count

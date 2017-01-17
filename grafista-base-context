@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SERIE_URL="base_context"
+BRANCH="render-layers"
+QUERY="grep -r -H --color=never -H -e ' Base.*visible_bases' -e ' Base.*selectable_bases' -e ' Base.*selected_bases' -e ' Base.*editable_bases' . | wc -l"
+
+grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"

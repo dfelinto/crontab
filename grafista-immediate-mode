@@ -1,17 +1,7 @@
 #!/bin/bash
-BLENDER=/home/guest/src/blender/grafista
-GRAFISTA=/home/guest/src/web-dev/grafista
 
-# get latest blender
-cd $BLENDER
-git fetch
-git checkout blender2.8
-git rebase origin/blender2.8
-cd source/blender
-count=`grep -r -H --color=never -H -e glBegin\( -e glEnd\( -e glVertex[^A] -e glNormal -e glTexCoord . | wc -l`
+SERIE_URL="immediate_mode"
+BRANCH="blender2.8"
+QUERY="grep -r -H --color=never -H -e glBegin\( -e glEnd\( -e glVertex[^A] -e glNormal -e glTexCoord . | wc -l"
 
-# update database
-cd $GRAFISTA
-source venv/bin/activate
-cd grafista
-python manage.py insert_sample immediate_mode $count
+grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"
