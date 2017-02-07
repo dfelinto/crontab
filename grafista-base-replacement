@@ -2,6 +2,6 @@
 
 SERIE_URL="base"
 BRANCH="render-layers"
-QUERY="grep -r -H --color=never -H -e '[^a-z]Base ' . | wc -l"
+QUERY="grep -r -H --color=never -H -e '[^a-z]BaseLegacy ' . | wc -l"
 
 grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"

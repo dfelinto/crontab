@@ -2,6 +2,6 @@
 
 SERIE_URL="base_context"
 BRANCH="render-layers"
-QUERY="grep -r -H --color=never -H -e ' Base.*visible_bases' -e ' Base.*selectable_bases' -e ' Base.*selected_bases' -e ' Base.*editable_bases' . | wc -l"
+QUERY="grep -r -H --color=never -H -e ' BaseLegacy.*visible_bases' -e ' BaseLegacy.*selectable_bases' -e ' BaseLegacy.*selected_bases' -e ' BaseLegacy.*editable_bases' . | wc -l"
 
 grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"
