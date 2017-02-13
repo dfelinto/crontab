@@ -5,7 +5,7 @@ BRANCH="blender2.8"
 QUERY="grep -r -H --color=never -H \
     -e fdrawbox \
     -e fdrawbox_filled \
-    -e fdrawcheckboard \
+    -e fdrawcheckerboard \
     -e fdrawline \
     -e glBegin\( \
     -e glColor \
