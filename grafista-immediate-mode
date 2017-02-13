@@ -2,6 +2,6 @@
 
 SERIE_URL="immediate_mode"
 BRANCH="blender2.8"
-QUERY="grep -r -H --color=never -H -e glBegin\( -e glEnd\( -e glVertex[^A] -e glNormal -e glTexCoord -e fdrawline -e fdrawbox -e fdrawbox_filled -e fdrawcheckboard -e sdrawline -e sdrawbox . | wc -l"
+QUERY="grep -r -H --color=never -H -e glBegin\( -e glEnd\( -e glVertex[^A] -e glNormal -e glTexCoord -e fdrawline -e fdrawbox -e fdrawbox_filled -e fdrawcheckboard -e sdrawline -e sdrawbox -e UI_ThemeColor -e glColor . | wc -l"
 
 grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"
