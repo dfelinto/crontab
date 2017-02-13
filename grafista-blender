@@ -25,7 +25,7 @@ cd $BLENDER
 git fetch
 
 if [ "$BEFORE" != "" ] ; then
-  HASH=`git rev-list -1 --before="$BEFORE" origin/$BRANCH`
+  HASH=`git rev-list -1 --first-parent --before="$BEFORE" origin/$BRANCH`
   echo "Hash: $HASH"
   echo "Date: $BEFORE"
   `git checkout $HASH`
