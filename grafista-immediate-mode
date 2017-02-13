@@ -22,4 +22,7 @@ QUERY="grep -r -H --color=never -H \
     -e UI_ThemeColor \
   . | wc -l"
 
-grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY"
+# optional parameter used to re-generate data sequences
+BEFORE="$1"
+
+grafista-blender "$SERIE_URL" "$BRANCH" "$QUERY" "$BEFORE"

@@ -3,14 +3,13 @@
 BLENDER=$HOME/src/blender/grafista
 GRAFISTA=$HOME/src/web-dev/grafista
 
-if [ "$#" != 3 ] ; then
-
+if [ "$#" != 3 ]  && [ "$#" != 4 ] ; then
   echo "Wrong number of parameters specified ($#) ... use 'h' for help. Exiting."
   exit 0
 
 elif [ "$LINE" == "h" ] ; then
 
-  echo "grafista-blender serie_url branch query"
+  echo "grafista-blender serie_url branch query (before)"
   exit 0
 fi
 
@@ -18,10 +17,22 @@ SERIE_URL=$1
 BRANCH=$2
 QUERY=$3
 
+# optional date reference, used to update
+BEFORE=$4
+
 # get latest blender
 cd $BLENDER
 git fetch
-`git checkout origin/$BRANCH`
+
+if [ "$BEFORE" != "" ] ; then
+  HASH=`git rev-list -1 --before="$BEFORE" origin/$BRANCH`
+  echo "Hash: $HASH"
+  echo "Date: $BEFORE"
+  `git checkout $HASH`
+else
+  `git checkout origin/$BRANCH`
+fi
+
 cd source/blender
 count=`eval $QUERY`
 
@@ -29,4 +40,10 @@ count=`eval $QUERY`
 cd $GRAFISTA
 source venv/bin/activate
 cd grafista
-python manage.py insert_sample $SERIE_URL $count
+
+if [ "$BEFORE" != "" ] ; then
+  DATE=$(date -d "$BEFORE" +%Y%m%d)
+  python manage.py insert_sample $SERIE_URL $count -t "$DATE"
+else
+  python manage.py insert_sample $SERIE_URL $count
+fi
