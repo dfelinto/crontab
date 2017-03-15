@@ -7,19 +7,61 @@ QUERY="grep -r -H --color=never -H \
     -e fdrawbox_filled \
     -e fdrawcheckerboard \
     -e fdrawline \
-    -e glBegin\( \
-    -e glColor[^M] \
-    -e glDisableClientState \
-    -e glEnableClientState \
-    -e glEnd\( \
-    -e glNormal \
-    -e glRect \
-    -e glTexCoord \
-    -e glVertex[^A] \
-    -e glVertexPointer \
     -e sdrawline \
     -e sdrawbox \
     -e UI_ThemeColor \
+    -e glAlphaFunc \
+    -e glBegin\( \
+    -e glCallList \
+    -e glCallLists \
+    -e glColor[^M] \
+    -e glClipPlane \
+    -e glDeleteLists \
+    -e glDisableClientState \
+    -e glDrawPixels \
+    -e glEnableClientState \
+    -e glEnd\( \
+    -e glEndList \
+    -e glFeedbackBuffer \
+    -e glGenLists \
+    -e glInitNames \
+    -e glIsList \
+    -e glLight[if] \
+    -e glLineStipple \
+    -e glListBase \
+    -e glLoadName \
+    -e glMaterial[if] \
+    -e glNewList \
+    -e glNormal \
+    -e glPassThrough \
+    -e glPixelZoom \
+    -e glPolygonStipple \
+    -e glPopAttrib \
+    -e glPopClientAttrib \
+    -e glPopName \
+    -e glPushAttrib \
+    -e glPushClientAttrib \
+    -e glPushName \
+    -e glRasterPos \
+    -e glRect[if] \
+    -e glRenderMode \
+    -e glSelectBuffer \
+    -e glShadeModel \
+    -e glTexCoord \
+    -e glTexGen \
+    -e glVertex[^A] \
+    -e glVertexPointer \
+    -e glWindowPos \
+    -e GL_ACCUM_.*_BITS \
+    -e GL_ALPHA_TEST \
+    -e GL_COLOR_MATERIAL \
+    -e GL_DEPTH_TEXTURE_MODE \
+    -e GL_LIGHTING \
+    -e GL_LINE_STIPPLE \
+    -e GL_LUMINANCE \
+    -e GL_POINT_SPRITE \
+    -e GL_TEXTURE_ENV_ \
+    -e GL_TEXTURE_GEN_ \
   . | wc -l"
 
 # optional parameter used to re-generate data sequences
