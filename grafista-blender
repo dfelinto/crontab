@@ -33,17 +33,15 @@ else
   `git checkout origin/$BRANCH`
 fi
 
-cd source/blender
 count=`eval $QUERY`
 
 # update database
 cd $GRAFISTA
 source venv/bin/activate
-cd grafista
 
 if [ "$BEFORE" != "" ] ; then
   DATE=$(date -d "$BEFORE" +%Y%m%d)
-  python manage.py insert_sample $SERIE_URL $count -t "$DATE"
+  flask series insert_sample $SERIE_URL $count -t "$DATE"
 else
-  python manage.py insert_sample $SERIE_URL $count
+  flask series insert_sample $SERIE_URL $count
 fi
